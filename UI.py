@@ -2,6 +2,7 @@ from tkinter import *
 
 num = []
 all_operant = []
+
 def labeles(label, num):
     label.config(text = ''.join(num))
     
@@ -59,22 +60,22 @@ def sqrt():
     labeles(label, num)
     print(num)
 
-def summa():
-    num.append('+')
+def amount():
+    num.append(' + ')
     labeles(label, num)
     print(num)
 
-def minus():
-    num.append('-')
+def difference():
+    num.append(' - ')
     labeles(label, num)
     print(num)
 
-def proizv():
-    num.append('*')
+def multiplication():
+    num.append(' * ')
     labeles(label, num)
     print(num)
 
-def delen():
+def division():
     num.append('/')
     labeles(label, num)
     print(num)
@@ -84,12 +85,12 @@ def V():
     labeles(label, num)
     print(num)
 
-def Tochka():
+def point():
     num.append('.')
     labeles(label, num)
     print(num)
 
-def Sbros():
+def dropping():
     num.clear()
     label1.config(text = '')
     labeles(label, num)
@@ -103,45 +104,46 @@ def Factorial():
 
 def Last():
     num.clear()
+    
     try:
         label.config(text = all_operant[-1])
         num.append(str(all_operant[-1]))
     except IndexError:
         label.config(text = 'Last not found')
 
-def Ravno():
+def Equals():
 
-    if '+' in num:
+    if ' + ' in num:
         x = ''.join(num)
-        x = x.split('+')
-        summa = float(x[0]) + float(x[1])
-        label1.config(text = summa)
+        x = x.split(' + ')
+        amount = float(x[0]) + float(x[1])
+        label1.config(text = amount)
 
-        all_operant.append(summa)
+        all_operant.append(amount)
 
-    if '-' in num:
+    if ' - ' in num:
         x = ''.join(num)
-        x = x.split('-')
-        minus = float(x[0]) - float(x[1])
-        label1.config(text = minus)
+        x = x.split(' - ')
+        difference = float(x[0]) - float(x[1])
+        label1.config(text = difference)
 
-        all_operant.append(minus)
+        all_operant.append(difference)
 
-    if '*' in num:
+    if ' * ' in num:
         x = ''.join(num)
-        x = x.split('*')
-        proiz = float(x[0]) * float(x[1])
-        label1.config(text = proiz)
+        x = x.split(' * ')
+        multiplication = float(x[0]) * float(x[1])
+        label1.config(text = multiplication)
 
-        all_operant.append(proiz)
+        all_operant.append(multiplication)
 
     if '/' in num:
         x = ''.join(num)
         x = x.split('/')
-        delen = float(x[0]) / float(x[1])
-        label1.config(text = delen)
+        division = float(x[0]) / float(x[1])
+        label1.config(text = division)
     
-        all_operant.append(delen)
+        all_operant.append(division)
 
     if '^' in num:
         x = ''.join(num)
@@ -162,8 +164,9 @@ def Ravno():
     if '!' in num:
         x = ''.join(num)
         x = x.split('!')
+        y = float(x[1])
         Factorial = 1
-        for i in range(1, int(x[1]) + 1):
+        for i in range(1, int(y) + 1):
             Factorial *= i
         label1.config(text = Factorial)
 
@@ -212,16 +215,16 @@ button8.grid(row=3, column = 1)
 button9 = Button(root, text='9', width = 5, command=number9)
 button9.grid(row=3, column = 2)
 
-buttonPlus = Button(root, text='+', width =1, command=summa)
+buttonPlus = Button(root, text='+', width =1, command=amount)
 buttonPlus.grid(row=2, column = 5)
 
-buttonMinus = Button(root, text='-', width =1, command= minus)
+buttonMinus = Button(root, text='-', width =1, command= difference)
 buttonMinus.grid(row=2, column = 6)
 
-buttonProiz = Button(root, text='*', width =1, command= proizv)
+buttonProiz = Button(root, text='*', width =1, command= multiplication)
 buttonProiz.grid(row=3, column = 6)
 
-buttonDelen = Button(root, text='/', width =1, command=delen)
+buttonDelen = Button(root, text='/', width =1, command=division)
 buttonDelen.grid(row=3, column = 5)
 
 buttonSqrt = Button(root, text='√', width =1, command= sqrt)
@@ -230,10 +233,10 @@ buttonSqrt.grid(row=2, column = 4)
 buttonV= Button(root, text='^', width =1, command=V)
 buttonV.grid(row=3, column = 4)
 
-buttonSbros = Button(root, text='C', width =1, command=Sbros)
+buttonSbros = Button(root, text='C', width =1, command=dropping)
 buttonSbros.grid(row=1, column = 4)
 
-buttonTochka = Button(root, text='.', width = 5, command=Tochka)
+buttonTochka = Button(root, text='.', width = 5, command=point)
 buttonTochka.grid(row=4, column = 1)
 
 buttonFactorial = Button(root, text='Factorial', width = 5, command=Factorial)
@@ -242,7 +245,7 @@ buttonFactorial.grid(row=4, column = 2)
 buttonLast = Button(root, text='      Last      ', width = 5, command=Last)
 buttonLast.grid(row=4, column = 3, columnspan=4)
 
-buttonRavno = Button(root, text='=', width = 6, command=Ravno)
+buttonRavno = Button(root, text='=', width = 6, command=Equals)
 buttonRavno.grid(row=1, column = 5, columnspan=2)
 
 
